@@ -24,19 +24,19 @@
       <div class="col-md-4">
        <div class="deposit status">
         <h5>Deposit</h5>
-        <h2>$<span id="currentDeposit">00</span></h2>
+        <h2>৳<span id="currentDeposit">00</span></h2>
        </div>
       </div>
       <div class="col-md-4">
         <div class="withdraw status">
           <h5>Withdraw</h5>
-          <h2>$<span id="currentWithdraw">00</span></h2>
+          <h2>৳<span id="currentWithdraw">00</span></h2>
         </div>
       </div>
       <div class="col-md-4">
       <div class="balance status">
         <h5>Balance</h5>
-        <h2>$<span id="balanceStatus">1240</span></h2>
+        <h2>৳<span id="balanceStatus">1240</span></h2>
       </div>
       </div>
     </div>
@@ -75,10 +75,17 @@ const depositBtn = document.getElementById('addDeposit');
 depositBtn.addEventListener('click',function(){
 const depositNumber = getInputNumber('depositAmount');
 
-updateSpanText('currentDeposit' , depositNumber);
-updateSpanText('balanceStatus' , depositNumber);
+if(depositNumber < 0){
+  alert("Deposit number cannot be negative.");
+}
+else{
+  updateSpanText('currentDeposit' , depositNumber);
+  updateSpanText('balanceStatus' , depositNumber);
 
 document.getElementById('depositAmount').value = "";
+
+}
+
 });
 
 function updateSpanText(id , depositNumber) {
